@@ -1,8 +1,8 @@
-const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-ts");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import { merge } from "webpack-merge";
+import singleSpaDefaults from "webpack-config-single-spa-ts";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = (webpackConfigEnv, argv) => {
+export default (webpackConfigEnv, argv) => {
   const orgName = "home-hub";
   const defaultConfig = singleSpaDefaults({
     orgName,
@@ -16,7 +16,25 @@ module.exports = (webpackConfigEnv, argv) => {
   console.log(webpackConfigEnv);
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx|ts|tsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-typescript",
+              ],
+            },
+          },
+        },
+      ],
+    },
+
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
@@ -27,5 +45,10 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
     ],
+
+    output: {
+      filename: "home-hub-root-config.js",
+      libraryTarget: "system",
+    },
   });
 };
