@@ -6,8 +6,9 @@
 
 ### [1. Single SPA: orquestrando micro front-ends](https://cursos.alura.com.br/course/single-spa-orquestrando-micro-frontends)
 
+- [Figma oficial do curso](https://www.figma.com/design/FXrKMz0gxIwN7rT8KOWqKG/HomeHub-%7C-Forma%C3%A7%C3%A3o-Micro-front-end?node-id=7684-21963)
 - Repositório oficial do curso: [home-hub](https://github.com/alura-cursos/home-hub/tree/main)
-- Branch o curso 1: mfe-curso-01
+- Minha branch para o curso 01: [mfe-curso-01](https://github.com/vanribeiro/mfe-home-hub-alura/tree/mfe-curso-01)
 
 ## Branches
 
