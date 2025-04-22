@@ -7,10 +7,13 @@ module.exports = (webpackConfigEnv, argv) => {
     projectName: "hello-world",
     webpackConfigEnv,
     argv,
-    outputSystemJS: false,
+    outputSystemJS: true,
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    output: {
+      filename: "home-hub-hello-world.js",
+      publicPath: "//localhost:8500/",
+    },
   });
 };

@@ -12,6 +12,9 @@ module.exports = (webpackConfigEnv, argv) => {
     disableHtmlGeneration: true,
   });
 
+  // eslint-disable-next-line no-console
+  console.log(webpackConfigEnv);
+
   return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
     plugins: [

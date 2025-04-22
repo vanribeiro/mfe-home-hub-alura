@@ -15,9 +15,10 @@
   <script type="injector-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
         "react": "https://cdn.jsdelivr.net/npm/react@19.0.0/+esm",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.0.0/+esm"
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.0.0/+esm",
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
+        "systemjs": "https://cdn.jsdelivr.net/npm/systemjs@6.14.1/dist/system.min.js"
       }
     }
   </script>
@@ -31,8 +32,7 @@
     {
       "imports": {
         "@home-hub/root-config": "//localhost:9000/home-hub-root-config.js",
-        "@home-hub/hello-world": "//localhost:8500/home-hub-hello-world.js",
-        "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+        "@home-hub/hello-world": "http://localhost:8500/home-hub-hello-world.js"
       }
     }
   </script>
@@ -40,6 +40,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.14.1/dist/system.min.js"></script>
 </head>
 <body>
   <noscript>
@@ -47,8 +48,9 @@
   </noscript>
   <main></main>
   <script>
-    window.importMapInjector.initPromise.then(() => {
-      import('@home-hub/root-config');
+    window.importMapInjector.initPromise.then((application) => {
+      import('@home-hub/root-config').then((app) =>
+        { console.log(app) });
     });
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
